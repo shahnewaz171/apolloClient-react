@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 interface Props {
-    item: any,
-    key: string,
+    item: any;
+    key: string;
+    handleUpdateFood: any;
 }
 
-const FoodList: React.FC<Props> = ({ item }) => {
+const FoodList: React.FC<Props> = ({ item, handleUpdateFood }) => {
     const { id, category, description, thumb } = item;
 
-    console.log(thumb);
-
     return (
-        <Grid item xs={4}>
-            <Card sx={{ maxWidth: 345 }}>
+        <Grid item xs={12} lg={3}>
+            <Card>
                 <CardMedia
                     component="img"
                     height="140"
@@ -28,8 +27,8 @@ const FoodList: React.FC<Props> = ({ item }) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small">Share</Button>
-                    <Button size="small">Learn More</Button>
+                    <Button onClick={() => handleUpdateFood(id)} variant="contained" sx={{ textTransform: 'none', py: .3 }} color="success">Update</Button>
+                    <Button variant="contained" sx={{ textTransform: 'none', py: .3, bgcolor: "#e91616" }}>Delete</Button>
                 </CardActions>
             </Card>
         </Grid>
